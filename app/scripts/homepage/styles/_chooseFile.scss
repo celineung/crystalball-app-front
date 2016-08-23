@@ -1,0 +1,82 @@
+@import './../../../styles/app';
+
+.file-form {
+
+	.upload-bpmn-file-container {
+
+		border: dashed 5px $light-grey-border-color;
+		padding: 30px 30px; 
+		background-color: $light-grey-background-color;
+		border-radius: 5px;
+
+		&:hover {
+			background-color: pink;
+		}
+
+		.upload-bpmn-file-button {
+			position: relative;
+			width: 220px;
+			display: inline-block;
+
+			.choose-bpmn-file {
+				position: absolute;
+		  	top: 0; left: 0;
+			  width: 100%;
+			  padding: 10px 0;
+			  opacity: 0;
+				cursor: pointer;
+			}
+
+			.choose-bpmn-file-label {
+				display: block;
+				padding: 10px 45px;
+				background-color: $bright-red;
+				color: #fff;
+				font-size: 1em;
+				transition: all .4s;
+				cursor: pointer;
+			}
+
+			.choose-bpmn-file:hover + .choose-bpmn-file-label,
+			.choose-bpmn-file:focus + .choose-bpmn-file-label {
+			  background: $grey-button;
+			  color: $bright-red;
+			}
+		}
+
+		.upload-choice-keyword {
+			display: inline-block;
+			color: #777;
+			font-weight: bold;
+			padding: 0px 10px;
+		}
+
+		.upload-bpmn-file-drag-drop {
+			display: inline-block;
+			color: #777;
+		}
+
+	}
+
+}
+
+.file-upload-message-container {
+
+	padding: 10px 10px;
+	vertical-align: middle;
+	height: 30px;
+
+	.fa-exclamation-circle {
+		color: $bright-red;
+		padding-right: 10px;
+	}
+
+	.fa-check-circle {
+		color: #008080;
+		padding-right: 10px;
+	}
+
+	.file-upload-message {
+		font-size: 0.8em;
+	}
+}
