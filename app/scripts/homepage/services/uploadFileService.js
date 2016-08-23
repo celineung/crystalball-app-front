@@ -8,7 +8,7 @@ module.exports = [
     factory.sendFile = function(fileName, fileData) {
     	return $http({
             method: 'POST',
-            url: '/upload-file',
+            url: 'file/upload-file',
             headers: { "Content-Type": 'application/x-www-form-urlencoded' },
             data: {
             		fileName : fileName,

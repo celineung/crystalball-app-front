@@ -27,7 +27,6 @@ module.exports = ["$rootScope", function ($rootScope) {
 
 	    reader.onload = function() {
 		    var fileContents = reader.result;
-		    debugger;
 		    $rootScope.$broadcast("send-uploaded-file", reader.result);
 			};
 			reader.readAsText(files[0]);

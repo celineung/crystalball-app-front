@@ -9,7 +9,6 @@ module.exports = ['$rootScope','$parse', function ($rootScope, $parse) {
     controllerAs: 'fileUploadController',
     link: function (scope, element, attrs, controller) {
     	element.bind('change', function(e) {
-      	//var onFileReadFn = $parse(attrs.fileUploadDirective);
       	var reader = new FileReader();
       	controller.fileName = element[0].files[0].name;
 				$rootScope.$broadcast("additional-file-data", controller.fileName);
