@@ -22,8 +22,8 @@ module.exports = ['$rootScope','$parse', function ($rootScope, $parse) {
   };
 }];
 
-FileUploadController.$inject = ['$rootScope', '$scope', 'fileUploadService'];
-function FileUploadController($rootScope, $scope, fileUploadService) {
+FileUploadController.$inject = ['$rootScope', '$scope'];
+function FileUploadController($rootScope, $scope) {
 	
 	var fileUploadController = this;
 	

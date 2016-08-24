@@ -1,0 +1,16 @@
+
+.processes-list {
+	margin-top : 30px;
+	border : 2px solid #f1f1f1;
+
+	.fa {
+		padding-right : 10px;
+		color: $grey-font-color;
+
+		&:hover {
+			color : $bright-red;
+			cursor : pointer;
+			text-decoration: none;
+		}
+	}
+}

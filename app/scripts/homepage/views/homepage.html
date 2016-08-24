@@ -1,4 +1,25 @@
 <div class="container">
 	<h1>Processes</h1>
 	<choose-file-directive></choose-file-directive>
+
+	<table class="table table-striped processes-list">
+    <thead>
+      <tr>
+        <th>date created</th>
+        <th>process name</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="process in homeController.allProcesses">
+        <td>{{ process.date_creation }}</td>
+        <td>{{ process.name }}</td>
+        <td>
+        	<a class="fa fa-play-circle" aria-hidden="true"></a>
+        	<a class="fa fa-medkit" aria-hidden="true"></a>
+        	<a class="fa fa-commenting" aria-hidden="true"></a>
+      	</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

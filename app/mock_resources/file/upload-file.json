@@ -1,0 +1,6 @@
+{
+	"processes" : [
+		{ "name" : "shopping process", "date_creation" : "23/08/2016" },
+		{ "name" : "booking process", "date_creation" : "20/08/2016" }
+	]
+}

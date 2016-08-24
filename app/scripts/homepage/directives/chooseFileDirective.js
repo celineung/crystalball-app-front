@@ -53,7 +53,6 @@ function ChooseFileController($rootScope, $scope, $timeout, fileUploadService) {
   });
 
  	$scope.$on("send-uploaded-file", function(event, contents) {
-		console.log(contents);
     fileUploadService.sendFile(chooseFileController.fileName, contents).then(function() {
     		$rootScope.$broadcast("load-file-state", "success");
     	}, function() {

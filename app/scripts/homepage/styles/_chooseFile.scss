@@ -1,4 +1,3 @@
-@import './../../../styles/app';
 
 .file-form {
 
@@ -46,14 +45,14 @@
 
 		.upload-choice-keyword {
 			display: inline-block;
-			color: #777;
+			color: $light-grey-font-color;
 			font-weight: bold;
 			padding: 0px 10px;
 		}
 
 		.upload-bpmn-file-drag-drop {
 			display: inline-block;
-			color: #777;
+			color: $light-grey-font-color;
 		}
 
 	}
