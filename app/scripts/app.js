@@ -12,13 +12,15 @@
 	require('./top-navigation/styles/navigation.scss');
 
 	require('./homepage/homepage');
+	require('./processDetail/processDetail');
 	require('./top-navigation/directives/navigationDirective');
 
 	angular.module("NgAppProject", [
 		'ngRoute',
 		'ng',
+		'ngAnimate',
 		'Homepage',
-		'ngAnimate'
+		'ProcessDetail'
 	])
 	.directive('topNavigationDirective', require('./top-navigation/directives/navigationDirective'));
 })();

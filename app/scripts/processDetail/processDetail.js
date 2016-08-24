@@ -1,24 +1,20 @@
 (function () {
 	'use strict';
 
-	require('./styles/homepage.scss');
+	require('./styles/processDetail.scss');
 	
-	require('./views/homepage.html');	
-	require('./views/chooseFile.html');
+	require('./views/processDetail.html');	
 	
-	var homeController = require('./controllers/homeController');
-	var chooseFileDirective = require('./directives/chooseFileDirective');
-	var fileUploadDirective = require('./directives/fileUploadDirective');
-	var fileUploadService = require('./services/uploadFileService');
+	var processDetailController = require('./controllers/processDetailController');
 
-	angular.module('Homepage', [
+	angular.module('ProcessDetail', [
 		'ngRoute',
 		'ng'
 		])
 		.config([
 				'$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$injector',
 				function($controllerProvider, $compileProvider, $filterProvider, $provide, $injector) {
-					angular.module('Homepage').register = {
+					angular.module('ProcessDetail').register = {
 						controller: function(name, content) {
 							return $controllerProvider.register(name, content);
 						},
@@ -41,18 +37,15 @@
 			])
 		.config(['$routeProvider', function($routeProvider) {
 				$routeProvider
-					.when('/', {
-						templateUrl: 'scripts/homepage/views/homepage.html',
-						controller: 'homeController',
-						controllerAs: 'homeController',
+					.when('/processdetail', {
+						templateUrl: 'scripts/processDetail/views/processDetail.html',
+						controller: 'processDetailController',
+						controllerAs: 'processDetailController',
 						resolve: {
 							deps: function() {
 								return require.ensure([], function (require) {
-									angular.module('Homepage').register.controller("homeController", homeController);
-									angular.module('Homepage').register.directive("chooseFileDirective", chooseFileDirective);
-									angular.module('Homepage').register.directive("fileUploadDirective", fileUploadDirective);
-									angular.module('Homepage').register.factory("fileUploadService", fileUploadService);
-								}, '_homepage');
+									angular.module('ProcessDetail').register.controller("processDetailController", processDetailController);
+								}, '_processDetail');
 							}
 						}
 					});

@@ -19,15 +19,17 @@ module.exports = ["$rootScope", function ($rootScope) {
 		});
 
 		elem.bind("drop", function(evt) {
-	    evt.stopPropagation();
-	    evt.preventDefault();
+	    	evt.stopPropagation();
+	    	evt.preventDefault();
 
-	    var files = evt.dataTransfer.files;
-	    var reader = new FileReader();
+	    	var files = evt.dataTransfer.files;
+	    	var reader = new FileReader();
 
-	    reader.onload = function() {
-		    var fileContents = reader.result;
-		    $rootScope.$broadcast("send-uploaded-file", reader.result);
+	    	$rootScope.$broadcast("additional-file-data", files[0].name);
+
+		    reader.onload = function() {
+			    var fileContents = reader.result;
+			    $rootScope.$broadcast("send-uploaded-file", reader.result);
 			};
 			reader.readAsText(files[0]);
 		});

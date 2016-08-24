@@ -2,8 +2,8 @@
 'use strict';
 
 module.exports = [
-	'$scope', 'fileUploadService',
-	function HomeController($scope, fileUploadService) {
+	'fileUploadService',
+	function HomeController(fileUploadService) {
 		
 		var homeController = this;
 
