@@ -1,20 +1,20 @@
 (function () {
 	'use strict';
 
-	require('./styles/playProcess.scss');
+	require('./styles/runProcess.scss');
 	
-	require('./views/playProcess.html');	
+	require('./views/runProcess.html');	
 	
-	var playProcessController = require('./controllers/playProcessController');
+	var playProcessController = require('./controllers/runProcessController');
 
-	angular.module('PlayProcess', [
+	angular.module('RunProcess', [
 		'ngRoute',
 		'ng'
 		])
 		.config([
 				'$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$injector',
 				function($controllerProvider, $compileProvider, $filterProvider, $provide, $injector) {
-					angular.module('PlayProcess').register = {
+					angular.module('RunProcess').register = {
 						controller: function(name, content) {
 							return $controllerProvider.register(name, content);
 						},
@@ -37,14 +37,14 @@
 			])
 		.config(['$routeProvider', function($routeProvider) {
 				$routeProvider
-					.when('/playprocess/:idProcess', {
-						templateUrl: 'scripts/playProcess/views/playProcess.html',
-						controller: 'playProcessController',
-						controllerAs: 'playProcessController',
+					.when('/runprocess/:idProcess', {
+						templateUrl: 'scripts/runProcess/views/runProcess.html',
+						controller: 'runProcessController',
+						controllerAs: 'runProcessController',
 						resolve: {
 							deps: function() {
 								return require.ensure([], function (require) {
-									angular.module('ProcessDetail').register.controller("playProcessController", playProcessController);
+									angular.module('RunProcess').register.controller("runProcessController", playProcessController);
 								}, '_processDetail');
 							}
 						}
