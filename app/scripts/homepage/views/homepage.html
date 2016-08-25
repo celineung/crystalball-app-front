@@ -15,9 +15,9 @@
         <td>{{ process.date_creation }}</td>
         <td>{{ process.name }}</td>
         <td>
-        	<a class="fa fa-play-circle" aria-hidden="true"></a>
-        	<a class="fa fa-medkit" aria-hidden="true"></a>
-        	<a class="fa fa-commenting" aria-hidden="true" href="#/processdetail"></a>
+        	<a class="fa fa-play-circle" title="deploy and run" ng-href="#/playprocess/{{ process.id }}"></a>
+        	<a class="fa fa-medkit" title="deploy and debug"></a>
+        	<a class="fa fa-commenting" title="information" ng-href="#/processdetail/{{ process.id }}"></a>
       	</td>
       </tr>
     </tbody>

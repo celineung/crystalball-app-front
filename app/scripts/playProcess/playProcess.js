@@ -1,21 +1,20 @@
 (function () {
 	'use strict';
 
-	require('./styles/processDetail.scss');
+	require('./styles/playProcess.scss');
 	
-	require('./views/processDetail.html');	
+	require('./views/playProcess.html');	
 	
-	var processDetailController = require('./controllers/processDetailController');
-	var processDetailService = require('./services/processDetailService');
+	var playProcessController = require('./controllers/playProcessController');
 
-	angular.module('ProcessDetail', [
+	angular.module('PlayProcess', [
 		'ngRoute',
 		'ng'
 		])
 		.config([
 				'$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$injector',
 				function($controllerProvider, $compileProvider, $filterProvider, $provide, $injector) {
-					angular.module('ProcessDetail').register = {
+					angular.module('PlayProcess').register = {
 						controller: function(name, content) {
 							return $controllerProvider.register(name, content);
 						},
@@ -38,15 +37,14 @@
 			])
 		.config(['$routeProvider', function($routeProvider) {
 				$routeProvider
-					.when('/processdetail/:idProcess', {
-						templateUrl: 'scripts/processDetail/views/processDetail.html',
-						controller: 'processDetailController',
-						controllerAs: 'processDetailController',
+					.when('/playprocess/:idProcess', {
+						templateUrl: 'scripts/playProcess/views/playProcess.html',
+						controller: 'playProcessController',
+						controllerAs: 'playProcessController',
 						resolve: {
 							deps: function() {
 								return require.ensure([], function (require) {
-									angular.module('ProcessDetail').register.controller("processDetailController", processDetailController);
-									angular.module('ProcessDetail').register.factory("processDetailService", processDetailService);
+									angular.module('ProcessDetail').register.controller("playProcessController", playProcessController);
 								}, '_processDetail');
 							}
 						}

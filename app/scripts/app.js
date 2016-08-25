@@ -13,14 +13,16 @@
 
 	require('./homepage/homepage');
 	require('./processDetail/processDetail');
-	require('./top-navigation/directives/navigationDirective');
+	require('./playProcess/playProcess');
+	require('./topNavigation/directives/navigationDirective');
 
 	angular.module("NgAppProject", [
 		'ngRoute',
 		'ng',
 		'ngAnimate',
 		'Homepage',
-		'ProcessDetail'
+		'ProcessDetail',
+		'PlayProcess'
 	])
 	.directive('topNavigationDirective', require('./top-navigation/directives/navigationDirective'));
 })();

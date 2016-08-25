@@ -2,5 +2,39 @@
 	
 	<h1>Process details</h1>
 
+	<div class="row process-info">
+		<div class="col-md-1 col-sm-1 col-xs-1">
+			<i class="fa fa-info-circle" aria-hidden="true"></i>
+		</div>
+		<div class="col-md-11 col-sm-11 col-xs-11">
+			<table>
+				<tr>
+					<td class="process-detail">Name: </td>
+					<td>{{ processDetailController.info.name }}</td>
+				</tr>
+				<tr>
+					<td class="process-detail">Created at: </td>
+					<td>{{ processDetailController.info.date_creation }}</td>
+				</tr>
+				<tr>
+					<td class="process-detail">Author: </td>
+					<td>{{ processDetailController.info.author }}</td>
+				</tr>
+				<tr>
+					<td class="process-detail">Last deploy date: </td>
+					<td>{{ processDetailController.info.last_deploy_date }}</td>
+				</tr>
+				<tr>
+					<td class="process-detail">Last deploy state: </td>
+					<td>{{ processDetailController.info.status }}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
+	<div class="row process-image">
+		<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-11 col-sm-11 col-xs-11">
+			<img ng-src="{{ processDetailController.info.image}}"/>
+		</div>
+	</div>
 </div>

@@ -1,0 +1,26 @@
+@import './../../../styles/app';
+
+.process-info {
+	
+	.fa-info-circle {
+		font-size : 1.7em;
+	}
+
+	td {
+		padding-right : 10px;
+
+		&.process-detail {
+			color : $bright-red;
+    	font-weight : bold;
+		}
+	}
+}
+
+.process-image {
+
+	margin-top : 30px;
+
+	img {
+		width : 100%;
+	}
+}

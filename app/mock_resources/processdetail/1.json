@@ -1,0 +1,8 @@
+{
+	"name" : "shopping process",
+	"image" : "/mock_resources/processdetail/1/diagram1.png",
+	"date_creation" : "23/08/2016",
+	"last_deploy_date" : "24/08/2016",
+	"author" : "Céline",
+	"status" : "success"
+}

@@ -2,15 +2,18 @@
 'use strict';
 
 module.exports = [
-	'$scope',
-	function ProcessDetailController($scope) {
+	'$scope', '$routeParams', 'processDetailService',
+	function ProcessDetailController($scope, $routeParams, processDetailService) {
 		
 		var processDetailController = this;
+		processDetailController.info = {};
 
 		init();
 
 		function init() {
-
+			processDetailService.getProcessInfo($routeParams.idProcess).then(function(response) {
+				processDetailController.info = response.data;
+			});
 		}
 	}
 ];
