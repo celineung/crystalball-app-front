@@ -13,7 +13,7 @@
 
 	require('./homepage/homepage');
 	require('./processDetail/processDetail');
-	require('./playProcess/playProcess');
+	require('./runProcess/runProcess');
 
 	require('./topNavigation/directives/navigationDirective');
 
@@ -25,7 +25,7 @@
 		'ngAnimate',
 		'Homepage',
 		'ProcessDetail',
-		'PlayProcess',
+		'RunProcess',
 		'AppConstants'
 	])
 	.directive('topNavigationDirective', require('./topNavigation/directives/navigationDirective'));
