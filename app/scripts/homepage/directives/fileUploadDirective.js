@@ -8,15 +8,11 @@ module.exports = ['$rootScope','$parse', function ($rootScope, $parse) {
     controller: FileUploadController,
     controllerAs: 'fileUploadController',
     link: function (scope, element, attrs, controller) {
-    	element.bind('change', function(e) {
-      	var reader = new FileReader();
-      	controller.fileName = element[0].files[0].name;
-				$rootScope.$broadcast("additional-file-data", controller.fileName);
-
-      	reader.onload = function() {
-			    $rootScope.$broadcast("send-uploaded-file", reader.result);
-				};
-				reader.readAsText(element[0].files[0]);
+    	
+      element.bind('change', function(e) {
+        controller.fileName = element[0].files[0].name;
+        $rootScope.$broadcast("read-file", element[0].files[0]);
+        scope.$apply();
       });
     }
   };

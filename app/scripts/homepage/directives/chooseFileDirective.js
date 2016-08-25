@@ -19,46 +19,56 @@ module.exports = ["$rootScope", function ($rootScope) {
 		});
 
 		elem.bind("drop", function(evt) {
-	    	evt.stopPropagation();
-	    	evt.preventDefault();
+    	evt.stopPropagation();
+    	evt.preventDefault();
 
-	    	var files = evt.dataTransfer.files;
-	    	var reader = new FileReader();
+    	var files = evt.dataTransfer.files;
 
-	    	$rootScope.$broadcast("additional-file-data", files[0].name);
-
-		    reader.onload = function() {
-			    var fileContents = reader.result;
-			    $rootScope.$broadcast("send-uploaded-file", reader.result);
-			};
-			reader.readAsText(files[0]);
+			$rootScope.$broadcast("read-file", files[0]);
+			scope.$apply();
 		});
 	}
 
 }];
 
-ChooseFileController.$inject = ["$rootScope", "$scope", "$timeout", "fileUploadService"];
-function ChooseFileController($rootScope, $scope, $timeout, fileUploadService) {
+ChooseFileController.$inject = ["$rootScope", "$scope", "$timeout", "fileUploadService", "AppConstants"];
+function ChooseFileController($rootScope, $scope, $timeout, fileUploadService, appConstants) {
 	var chooseFileController = this;
 	chooseFileController.loadFileState = "";
+	chooseFileController.loadFilePossibleStates = appConstants.loadFileErrors;
 	chooseFileController.fileName = "";
 
-	$scope.$on("load-file-state", function(event, data) {
-		chooseFileController.loadFileState = data;
+	$scope.$on("read-file", function(event, file) {
+		if(!fileUploadService.isCorrectFileFormat(file.name)) {
+			loadFileState("incorrect_format");
+			return;
+		}
+  	additionalFileData(file.name);
+
+		var reader = new FileReader();
+    reader.onload = function() {
+	    var fileContents = reader.result;
+	    sendUploadedFile(reader.result);
+		};
+		reader.readAsText(file);
+	});
+
+	function additionalFileData(fileName) {
+		chooseFileController.fileName = fileName;
+  };
+
+ 	function sendUploadedFile(contents) {
+    fileUploadService.sendFile(chooseFileController.fileName, contents).then(function() {
+  		loadFileState("success");
+  	}, function() {
+  		loadFileState("send_error");
+  	});
+  };
+
+  function loadFileState(state) {
+		chooseFileController.loadFileState = state;
 		$timeout(function() {
 			chooseFileController.loadFileState = "";
 		}, 5000);
-	});
-
-	$scope.$on("additional-file-data", function(event, fileName) {
-		chooseFileController.fileName = fileName;
-  });
-
- 	$scope.$on("send-uploaded-file", function(event, contents) {
-    fileUploadService.sendFile(chooseFileController.fileName, contents).then(function() {
-    		$rootScope.$broadcast("load-file-state", "success");
-    	}, function() {
-    		$rootScope.$broadcast("load-file-state", "error");
-    	});
-  });
+	};
 }

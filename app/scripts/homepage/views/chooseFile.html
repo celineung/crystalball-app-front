@@ -13,9 +13,11 @@
 		</div>
 	</div>
 </form>
+
 <div class="file-upload-message-container">
-	<div ng-if="chooseFileController.loadFileState === 'success'"><i class="fa fa-check-circle" aria-hidden="true"></i><span class="file-upload-message">File uploaded successfully.</span></div>
-	<div ng-if="chooseFileController.loadFileState === 'error'"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span class="file-upload-message">An error occured. Please send file again.</span></div>
+	<div ng-if="chooseFileController.loadFileState === chooseFileController.loadFilePossibleStates.success.type"><i class="fa fa-check-circle" aria-hidden="true"></i><span class="file-upload-message">File uploaded successfully.</span></div>
+	<div ng-if="chooseFileController.loadFileState === chooseFileController.loadFilePossibleStates.incorrectFormat.type"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span class="file-upload-message">{{ chooseFileController.loadFilePossibleStates.incorrectFormat.message }}</span></div>
+	<div ng-if="chooseFileController.loadFileState === chooseFileController.loadFilePossibleStates.sendError.type"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span class="file-upload-message">An error occured. Please send file again.</span></div>
 </div>
 
 

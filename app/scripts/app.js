@@ -9,12 +9,15 @@
 	require('font-awesome/css/font-awesome.css');
 	require('./../styles/app.scss');
 
-	require('./top-navigation/styles/navigation.scss');
+	require('./topNavigation/styles/navigation.scss');
 
 	require('./homepage/homepage');
 	require('./processDetail/processDetail');
 	require('./playProcess/playProcess');
+
 	require('./topNavigation/directives/navigationDirective');
+
+	require('./config/appConstants');
 
 	angular.module("NgAppProject", [
 		'ngRoute',
@@ -22,7 +25,8 @@
 		'ngAnimate',
 		'Homepage',
 		'ProcessDetail',
-		'PlayProcess'
+		'PlayProcess',
+		'AppConstants'
 	])
-	.directive('topNavigationDirective', require('./top-navigation/directives/navigationDirective'));
+	.directive('topNavigationDirective', require('./topNavigation/directives/navigationDirective'));
 })();
